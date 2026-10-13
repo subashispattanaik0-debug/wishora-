@@ -1,0 +1,1158 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wishora - Make Every Moment Special</title>
+
+<meta name="description"
+content="Create beautiful personalized birthday wishes, love messages, apologies, anniversary greetings and festive wishes with Wishora.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff4f87;
+    --secondary: #8b5cf6;
+    --background: #fff7fb;
+    --text: #292338;
+    --card: #ffffff;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    color: var(--primary);
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--secondary);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 70px 20px 55px;
+    background: linear-gradient(135deg, #ffe0ee, #eee4ff, #fff5d9);
+}
+
+.badge {
+    display: inline-block;
+    background: white;
+    padding: 9px 17px;
+    border-radius: 50px;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 7vw, 65px);
+    line-height: 1.13;
+    margin-bottom: 18px;
+    letter-spacing: -2px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ff4385, #8957ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.7;
+    color: #655b75;
+    font-size: 16px;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 28px;
+    background: linear-gradient(90deg, #ff4f87, #8b5cf6);
+    color: white;
+    text-decoration: none;
+    padding: 15px 27px;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(180, 75, 180, 0.2);
+    transition: transform 0.2s;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+}
+
+/* OCCASIONS */
+
+.section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 55px 20px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    font-size: clamp(26px, 4vw, 36px);
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: #82778d;
+    line-height: 1.6;
+}
+
+.occasion-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.occasion {
+    background: var(--card);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 23px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.25s;
+    box-shadow: 0 5px 20px rgba(60,30,80,0.04);
+    color: var(--text);
+    font-family: inherit;
+}
+
+.occasion:hover,
+.occasion.active {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255,79,135,0.12);
+}
+
+.occasion .emoji {
+    font-size: 34px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.occasion h3 {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* MESSAGE GENERATOR */
+
+.generator {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 12px 40px rgba(50,30,80,0.07);
+    border: 1px solid #f0e8f6;
+}
+
+.generator h2 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.generator .subtitle {
+    color: #82778d;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #e5dce9;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #fffcff;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255,79,135,0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.button {
+    flex: 1;
+    min-width: 140px;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.primary {
+    color: white;
+    background: linear-gradient(90deg, #ff4f87, #8b5cf6);
+}
+
+.secondary {
+    color: #6b38ba;
+    background: #f0e8ff;
+}
+
+.whatsapp {
+    color: white;
+    background: #25a65a;
+}
+
+/* OUTPUT */
+
+.output {
+    display: none;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #fff0f6, #f2edff);
+    border: 1px solid #f3d9f0;
+    animation: appear 0.5s ease;
+}
+
+.output h3 {
+    margin-bottom: 15px;
+    color: #a03c8c;
+}
+
+.message-text {
+    white-space: pre-wrap;
+    line-height: 1.9;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.output .button-row {
+    margin-top: 20px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* EXTRA FEATURE CARDS */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(60,30,80,0.04);
+}
+
+.feature span {
+    font-size: 35px;
+}
+
+.feature h3 {
+    margin: 14px 0 9px;
+}
+
+.feature p {
+    color: #82778d;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 30px;
+    padding: 35px 20px;
+    text-align: center;
+    background: #251b37;
+    color: white;
+}
+
+footer p {
+    line-height: 1.8;
+    font-size: 13px;
+    color: #ded4ea;
+}
+
+footer .footer-logo {
+    color: #ff80ad;
+    font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* CONFETTI */
+
+.confetti {
+    position: fixed;
+    top: -15px;
+    width: 9px;
+    height: 14px;
+    z-index: 1000;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(900deg);
+        opacity: 0.3;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+    .occasion-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    nav {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .hero {
+        padding: 55px 18px 45px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .section {
+        padding: 40px 15px;
+    }
+
+    .occasion-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .occasion {
+        padding: 19px 8px;
+    }
+
+    .occasion .emoji {
+        font-size: 30px;
+    }
+
+    .generator {
+        padding: 21px 16px;
+        border-radius: 20px;
+    }
+
+    .generator h2 {
+        font-size: 23px;
+    }
+
+    .two-columns {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .button {
+        min-width: 100%;
+    }
+
+    .output {
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">Wish<span>ora</span> ✨</div>
+    <a class="nav-link" href="#generator">Create a Wish →</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="badge">💌 Make Someone Smile Today</div>
+
+    <h1>
+        Every Feeling<br>
+        Deserves a <span class="gradient-text">Beautiful Message.</span>
+    </h1>
+
+    <p>
+        Birthdays, love, apologies, anniversaries and festivals.
+        Create a heartfelt message for someone special and make
+        their day unforgettable.
+    </p>
+
+    <a href="#occasions" class="hero-button">
+        Create Your Special Wish 💖
+    </a>
+</header>
+
+<!-- OCCASIONS -->
+<section class="section" id="occasions">
+
+    <div class="section-heading">
+        <h2>Choose Your Occasion 💝</h2>
+        <p>Choose a feeling, personalize your message and spread happiness.</p>
+    </div>
+
+    <div class="occasion-grid">
+
+        <button class="occasion active" data-type="birthday">
+            <span class="emoji">🎂</span>
+            <h3>Happy Birthday</h3>
+        </button>
+
+        <button class="occasion" data-type="love">
+            <span class="emoji">❤️</span>
+            <h3>I Love You</h3>
+        </button>
+
+        <button class="occasion" data-type="miss">
+            <span class="emoji">🥹</span>
+            <h3>I Miss You</h3>
+        </button>
+
+        <button class="occasion" data-type="sorry">
+            <span class="emoji">🥺</span>
+            <h3>Say Sorry</h3>
+        </button>
+
+        <button class="occasion" data-type="anniversary">
+            <span class="emoji">💑</span>
+            <h3>Anniversary</h3>
+        </button>
+
+        <button class="occasion" data-type="newyear">
+            <span class="emoji">🎆</span>
+            <h3>Happy New Year</h3>
+        </button>
+
+        <button class="occasion" data-type="dussehra">
+            <span class="emoji">🏹</span>
+            <h3>Happy Dussehra</h3>
+        </button>
+
+        <button class="occasion" data-type="diwali">
+            <span class="emoji">🪔</span>
+            <h3>Happy Diwali</h3>
+        </button>
+
+        <button class="occasion" data-type="friendship">
+            <span class="emoji">🫂</span>
+            <h3>Friendship</h3>
+        </button>
+
+        <button class="occasion" data-type="goodmorning">
+            <span class="emoji">🌞</span>
+            <h3>Good Morning</h3>
+        </button>
+
+        <button class="occasion" data-type="goodnight">
+            <span class="emoji">🌙</span>
+            <h3>Good Night</h3>
+        </button>
+
+        <button class="occasion" data-type="congrats">
+            <span class="emoji">🎉</span>
+            <h3>Congratulations</h3>
+        </button>
+
+        <button class="occasion" data-type="valentine">
+            <span class="emoji">💘</span>
+            <h3>Valentine's Day</h3>
+        </button>
+
+        <button class="occasion" data-type="mothersday">
+            <span class="emoji">🌷</span>
+            <h3>Mother's Day</h3>
+        </button>
+
+        <button class="occasion" data-type="thankyou">
+            <span class="emoji">🙏</span>
+            <h3>Thank You</h3>
+        </button>
+
+        <button class="occasion" data-type="custom">
+            <span class="emoji">💌</span>
+            <h3>Other Occasion</h3>
+        </button>
+
+    </div>
+</section>
+
+<!-- MESSAGE GENERATOR -->
+<section class="section" id="generator">
+
+    <div class="generator">
+
+        <h2 id="generatorTitle">🎂 Create a Birthday Wish</h2>
+
+        <p class="subtitle">
+            Add names, select your style and create a message
+            that comes straight from the heart.
+        </p>
+
+        <form id="wishForm">
+
+            <div class="two-columns">
+                <div>
+                    <label for="sender">Your Name</label>
+                    <input id="sender" type="text"
+                        placeholder="e.g. Sonu">
+                </div>
+
+                <div>
+                    <label for="receiver">Their Name</label>
+                    <input id="receiver" type="text"
+                        placeholder="e.g. Epsita">
+                </div>
+            </div>
+
+            <label for="type">Select Occasion</label>
+            <select id="type">
+                <option value="birthday">🎂 Birthday</option>
+                <option value="love">❤️ I Love You</option>
+                <option value="miss">🥹 I Miss You</option>
+                <option value="sorry">🥺 Sorry / Apology</option>
+                <option value="anniversary">💑 Anniversary</option>
+                <option value="newyear">🎆 New Year</option>
+                <option value="dussehra">🏹 Dussehra</option>
+                <option value="diwali">🪔 Diwali</option>
+                <option value="friendship">🫂 Friendship</option>
+                <option value="goodmorning">🌞 Good Morning</option>
+                <option value="goodnight">🌙 Good Night</option>
+                <option value="congrats">🎉 Congratulations</option>
+                <option value="valentine">💘 Valentine's Day</option>
+                <option value="mothersday">🌷 Mother's Day</option>
+                <option value="thankyou">🙏 Thank You</option>
+                <option value="custom">💌 Other Occasion</option>
+            </select>
+
+            <label for="style">Choose Message Style</label>
+            <select id="style">
+                <option value="heartfelt">💖 Heartfelt & Emotional</option>
+                <option value="romantic">❤️ Romantic</option>
+                <option value="cute">🥰 Cute & Sweet</option>
+                <option value="funny">😂 Funny & Friendly</option>
+                <option value="formal">✨ Simple & Elegant</option>
+            </select>
+
+            <label for="details">Add Your Personal Feelings</label>
+            <textarea id="details"
+                placeholder="Write a memory, a special feeling, or something you want them to know..."></textarea>
+
+            <label for="customOccasion">Custom Occasion (Optional)</label>
+            <input id="customOccasion" type="text"
+                placeholder="e.g. Our first meeting">
+
+            <div class="button-row">
+                <button type="submit" class="button primary">
+                    ✨ Generate My Wish
+                </button>
+
+                <button type="button" class="button secondary"
+                    id="surpriseButton">
+                    🎲 Surprise Me
+                </button>
+            </div>
+
+        </form>
+
+        <div class="output" id="output" aria-live="polite">
+
+            <h3>💌 Your Special Message</h3>
+
+            <div class="message-text" id="messageText"></div>
+
+            <div class="button-row">
+                <button class="button primary" id="copyButton"
+                    type="button">
+                    📋 Copy Message
+                </button>
+
+                <button class="button whatsapp" id="whatsappButton"
+                    type="button">
+                    💚 Share on WhatsApp
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+
+    <div class="section-heading">
+        <h2>Why Wishora? 💗</h2>
+        <p>Little words can create unforgettable memories.</p>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature">
+            <span>✍️</span>
+            <h3>Personalized Wishes</h3>
+            <p>
+                Add names and personal feelings to make each message
+                more meaningful and unique.
+            </p>
+        </div>
+
+        <div class="feature">
+            <span>🎊</span>
+            <h3>Beautiful Animations</h3>
+            <p>
+                Enjoy colorful confetti effects when you create a
+                special message.
+            </p>
+        </div>
+
+        <div class="feature">
+            <span>💚</span>
+            <h3>Easy Sharing</h3>
+            <p>
+                Copy your message or open WhatsApp to share it with
+                someone special.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">Wishora ✨</div>
+
+    <p>Made with ❤️ for every special moment.</p>
+
+    <p>Celebrate love. Share happiness. Create memories.</p>
+
+    <p style="margin-top:15px;">
+        © <span id="year"></span> Wishora. All rights reserved.
+    </p>
+</footer>
+
+<script>
+
+/* MESSAGE LIBRARY */
+
+const messages = {
+
+birthday: {
+    title: "🎂 Create a Birthday Wish",
+    heartfelt: "Happy Birthday, {name}! 🎂💖\n\nToday is a beautiful reminder of how special you are. May your life always be filled with happiness, good health, beautiful memories, and people who genuinely care about you. May every dream in your heart find its way to reality. Keep smiling and keep shining. You deserve so many wonderful things in life. 🎉✨",
+    romantic: "Happy Birthday, my special person! ❤️🎂\n\nYou make ordinary moments feel magical, and your happiness means so much to me. I hope your birthday brings you endless smiles, sweet surprises, and all the love your heart can hold. May we create many more beautiful memories together. Sending you lots of love and warm wishes! 💋💖",
+    cute: "Happy Birthday, cutie pie! 🥹🎂💗\n\nToday is all about YOU! More smiles, more cake, more gifts, more happiness, and unlimited reasons to laugh. Stay adorable, stay happy, and never stop being the wonderful person you are. Sending you the biggest virtual hug! 🫂🎁",
+    funny: "Happy Birthday, {name}! 😂🎂\n\nCongratulations! You have officially unlocked another level of life. May your cake be big, your gifts expensive, and your responsibilities magically disappear for today. Eat cake, take pictures, and enjoy like a superstar! 🎉😂",
+    formal: "Wishing you a very Happy Birthday! 🎂\n\nMay the coming year bring you success, happiness, good health, and exciting opportunities. May your day be filled with beautiful moments and your future with wonderful achievements. Have a fantastic birthday!"
+},
+
+love: {
+    title: "❤️ Create an I Love You Message",
+    heartfelt: "Hey {name}, ❤️\n\nI just want you to know that you are genuinely special to me. Your presence brings happiness into my life, and even the smallest moments with you can mean so much. I may not always find the perfect words to express my feelings, but I truly appreciate having you in my life. You mean a lot to me. 💖",
+    romantic: "Hey {name}, my favorite person! ❤️🥹\n\nIf I could explain what you mean to me, I would fill an entire book with all the little reasons I care about you. Your smile makes my day brighter, your happiness matters to me, and every memory we create becomes something I treasure. I love you more than these little words can express. 💋💞",
+    cute: "I love youuu, {name}! 🥹❤️🫶\n\nYou are my favorite notification, my favorite conversation, and one of my favorite reasons to smile. If hugs could travel through a phone, you would be receiving a million of them right now! Stay my special human. 💗🫂",
+    funny: "Breaking news, {name}! 🚨❤️\n\nSomeone has officially become my favorite human, and unfortunately for you, there is no return policy! You are stuck with my silly jokes, random messages, and unlimited care. Congratulations! 😂💖",
+    formal: "Dear {name},\n\nI want you to know how much I value and appreciate you. Your kindness, personality, and presence make a positive difference in my life. You hold a very special place in my heart, and I am grateful for the connection we share. ❤️"
+},
+
+miss: {
+    title: "🥹 Create an I Miss You Message",
+    heartfelt: "Hey {name}, 🥹💗\n\nI have been thinking about you and wishing we could spend some time together. Sometimes, even an ordinary conversation with you is enough to make my day better. Distance may keep us apart for now, but the memories we share still bring a smile to my face. I hope we get to meet soon. 🫂",
+    romantic: "I miss you so much, {name}! ❤️🥹\n\nI miss our conversations, your smile, our little moments, and the happiness of simply being around you. Some days, I wish I could skip the distance and spend a little time with you. Until then, please remember that you are always someone very special to me. 💞",
+    cute: "Helloooo, {name}! 🥹🫶\n\nOfficial report: I am missing you approximately a million times today! My phone needs more messages from you, my day needs more of your smile, and I need one big hug from you. Please appear soon! 🫂💗",
+    funny: "Attention, {name}! 😂📢\n\nYou are hereby informed that your absence is causing excessive levels of missing-you feelings. Please report immediately for one virtual hug and a long conversation. Failure to comply may result in more messages from me! 😂🫂",
+    formal: "Hello {name},\n\nI hope you are doing well. I have been thinking about you and missing the time we spend together. I look forward to catching up and creating more wonderful memories soon. Take care of yourself. 💗"
+},
+
+sorry: {
+    title: "🥺 Create a Sorry Message",
+    heartfelt: "Hey {name}, 🥺\n\nI am genuinely sorry for hurting your feelings. I understand that my words or actions may have upset you, and I do not want to dismiss how you feel. You matter to me, and I value the bond we share. I will try to understand your perspective better and be more thoughtful in the future. I know that an apology does not instantly fix everything, but I truly mean it. I hope we can talk when you feel ready. ❤️",
+    romantic: "My dear {name}, ❤️🥺\n\nI am sorry for the way I made you feel. You deserve kindness, understanding, and respect from me. I never want my mistakes to make you feel that your feelings do not matter. I care about you and our relationship, and I want to learn from this instead of repeating the same mistakes. Please take the time you need. I am ready to listen whenever you feel comfortable. 🫂",
+    cute: "Heyyy {name}, 🥺💗\n\nI messed up, and I am truly sorry. I know a cute message cannot magically fix everything, but I hope it can be a small first step. Your feelings matter to me, and I want to make things right through my actions too. Sending you a gentle virtual hug whenever you are ready. 🫂❤️",
+    funny: "Dear {name}, 🥺\n\nI would like to officially apologize for my recent foolishness. My brain apparently took an unexpected holiday, and I made a mistake. Jokes aside, I am genuinely sorry for upsetting you. I understand that I need to do better, and I will take your feelings seriously. ❤️",
+    formal: "Dear {name},\n\nPlease accept my sincere apology for my actions and the way they affected you. I recognize that I should have handled the situation more thoughtfully. I take responsibility for my part and will work to avoid repeating this mistake. I respect your feelings and understand if you need time. I hope we can move forward through honest communication."
+},
+
+anniversary: {
+    title: "💑 Create an Anniversary Wish",
+    heartfelt: "Happy Anniversary, {name}! 💑💖\n\nToday celebrates the memories, experiences, and little moments that make our journey meaningful. I am grateful for the laughter we have shared and the lessons we continue to learn together. May our bond grow through kindness, trust, understanding, and beautiful new memories. Here's to many more wonderful moments! 🥂💗",
+    romantic: "Happy Anniversary, my favorite person! ❤️🌹\n\nEvery memory with you holds a special place in my heart. From our smallest conversations to our happiest moments, I treasure the journey we share. May we keep choosing understanding, honesty, laughter, and love every day. I look forward to making countless beautiful memories with you. 💋💞",
+    cute: "Happy Anniversary, cutie! 🥹💗\n\nAnother chapter of our beautiful story! More smiles, silly jokes, cute conversations, unforgettable memories, and countless reasons to appreciate each other. Thank you for being part of my journey. Here's to more happiness together! 🫶",
+    funny: "Happy Anniversary, {name}! 😂❤️\n\nWe have successfully survived another chapter of each other's jokes, habits, and dramatic moments! Clearly, our teamwork deserves an award. May we continue laughing, learning, and creating memories together. 😂💗",
+    formal: "Happy Anniversary, {name}.\n\nWishing you happiness and continued growth in the relationship you celebrate today. May the years ahead bring deeper understanding, lasting trust, mutual respect, and many beautiful memories. Congratulations on this special occasion."
+},
+
+newyear: {
+    title: "🎆 Create a New Year Wish",
+    heartfelt: "Happy New Year, {name}! 🎆💖\n\nMay this new year bring you peace, good health, exciting opportunities, and countless reasons to smile. May the difficult days teach you valuable lessons and the beautiful days give you memories to treasure. I hope this year brings you closer to your dreams and surrounds you with people who truly care about you. ✨",
+    romantic: "Happy New Year, my special person! ❤️🎆\n\nAs a new year begins, I hope we fill it with more beautiful conversations, unforgettable memories, laughter, and moments that bring us closer. Thank you for being someone so special in my life. May this year bring happiness to your heart and many wonderful moments for us to share. 💖",
+    cute: "Happy New Year, {name}! 🎆🥹\n\nNew year, new memories, new adventures, and the same old me sending you too many messages! May your days be full of smiles, your dreams come true, and your heart always find reasons to be happy. Sending you a big virtual hug! 🫂✨",
+    funny: "Happy New Year! 😂🎉\n\nMay your Wi-Fi be strong, your food be delicious, your sleep be peaceful, and your problems forget your address! Wishing you twelve months of happiness and absolutely no unnecessary drama. Have an amazing year, {name}! 🎆",
+    formal: "Wishing you and your family a very Happy New Year!\n\nMay the year ahead bring prosperity, good health, professional success, and personal happiness. May every new opportunity help you grow and achieve your goals. Best wishes for a wonderful year."
+},
+
+dussehra: {
+    title: "🏹 Create a Dussehra Wish",
+    heartfelt: "Happy Dussehra, {name}! 🏹✨\n\nMay this auspicious festival remind us that truth, courage, kindness, and goodness are always worth choosing. May your home be filled with peace, your heart with happiness, and your future with new opportunities. Wishing you and your family a joyful and blessed Dussehra! 🙏",
+    romantic: "Happy Dussehra, my special person! ❤️🏹\n\nMay this festival bring positivity into your life and help every worry make way for happiness. I wish you success in your dreams, peace in your heart, and countless beautiful moments ahead. May our lives always be filled with kindness, respect, and smiles. 💖",
+    cute: "Happy Dussehra, {name}! 🏹🥰\n\nMay all the negativity disappear and happiness take over your world! Wishing you sweet moments, delicious food, lovely family time, and lots of positive energy. Stay happy and keep shining! ✨💗",
+    funny: "Happy Dussehra, {name}! 😂🏹\n\nMay all your worries go away faster than Ravana's ten heads in the story, and may happiness enter your life like a festival full of lights and laughter! Enjoy the celebrations and have a wonderful day! 🎉",
+    formal: "Warm wishes on the auspicious occasion of Dussehra.\n\nMay the victory of good over evil inspire us to follow the path of truth, courage, and compassion. Wishing you and your family peace, prosperity, and happiness."
+},
+
+diwali: {
+    title: "🪔 Create a Diwali Wish",
+    heartfelt: "Happy Diwali, {name}! 🪔✨\n\nMay the festival of lights bring happiness, peace, prosperity, and new hope into your life. May every diya remind you of the light within you, and may your home be filled with laughter and beautiful memories. Wishing you and your family a wonderful Diwali! 💖",
+    romantic: "Happy Diwali, my special person! ❤️🪔\n\nMay your life shine brighter than every diya and your heart stay filled with happiness. You deserve beautiful moments, peaceful days, and endless reasons to smile. Sending you love and warm wishes this festive season. ✨",
+    cute: "Happy Diwali, {name}! 🥰🪔\n\nWishing you lots of sweets, happy smiles, beautiful lights, and the cutest festive memories! May your day sparkle with happiness and your heart glow with positivity. Have a lovely Diwali! 💗",
+    funny: "Happy Diwali! 😂🪔\n\nMay your sweets never run out, your festive photos look amazing, and your relatives ask only the questions you actually want to answer! Have a sparkling and happy Diwali, {name}! ✨",
+    formal: "Wishing you a very Happy Diwali.\n\nMay the festival of lights bring prosperity, good health, peace, and success to you and your family. May this season mark the beginning of many wonderful opportunities."
+},
+
+friendship: {
+    title: "🫂 Create a Friendship Message",
+    heartfelt: "Hey {name}, 💗🫂\n\nI just want to say that I appreciate having you in my life. Good friends make difficult days easier and happy days even better. Thank you for the conversations, the laughter, the support, and the memories. I hope our friendship continues to grow with trust, respect, and happiness.",
+    romantic: "Dear {name}, ❤️\n\nSome people enter our lives and slowly become incredibly important. You are one of those people for me. I appreciate your presence, our conversations, and all the little moments that make our connection special. Thank you for being someone I can genuinely care about.",
+    cute: "Bestieee {name}! 🥹🫂\n\nThank you for being my partner in random talks, silly jokes, and unforgettable memories. Life would be a lot less fun without your madness! Stay the amazing person you are, because our friendship deserves unlimited laughter and snacks! 😂💗",
+    funny: "Dear {name}, 😂\n\nThank you for tolerating my nonsense. Honestly, your patience deserves a trophy and our conversations deserve their own comedy show. May our friendship continue to survive bad jokes, embarrassing memories, and random late-night discussions! 🫂",
+    formal: "Dear {name},\n\nThank you for being a wonderful friend. I truly value the trust, kindness, and support that our friendship brings. I hope we continue to encourage each other, celebrate our successes, and create meaningful memories together."
+},
+
+goodmorning: {
+    title: "🌞 Create a Good Morning Message",
+    heartfelt: "Good morning, {name}! 🌞💗\n\nMay today bring you peace of mind, positive energy, and little moments that make you smile. Whatever challenges come your way, remember that you are capable of learning and growing through them. Wishing you a beautiful and productive day! ✨",
+    romantic: "Good morning, my favorite person! ❤️🌞\n\nI hope you woke up feeling peaceful and ready for a beautiful day. May something wonderful make you smile today, and may you remember that someone out here is wishing you happiness. Take care of yourself and have an amazing day! 💖",
+    cute: "Good morninggg, {name}! 🌞🥹\n\nWake up, sleepyhead! Sending you sunshine, positive vibes, imaginary flowers, and one giant virtual hug. May your breakfast be tasty, your day be easy, and your smile stay all day long! 🌷🫂",
+    funny: "Good morning, {name}! 😂🌞\n\nCongratulations on surviving another night of sleep! Your daily mission begins now: drink water, eat something delicious, smile at least three times, and avoid unnecessary drama. You have got this! 💪",
+    formal: "Good morning, {name}.\n\nWishing you a peaceful start and a productive day ahead. May you approach today's opportunities with confidence and finish the day with satisfaction. Have a wonderful day."
+},
+
+goodnight: {
+    title: "🌙 Create a Good Night Message",
+    heartfelt: "Good night, {name}! 🌙💗\n\nAs the day comes to an end, I hope you can leave your worries behind and give yourself time to rest. You deserve peaceful sleep and a fresh start tomorrow. May your dreams be pleasant and your heart feel lighter. Sleep well and take care! ✨",
+    romantic: "Good night, my special person! ❤️🌙\n\nI hope your night is peaceful and your dreams are beautiful. Whatever happened today, remember that tomorrow brings another opportunity for happiness and fresh beginnings. Sending you warmth, care, and a big virtual hug before you sleep. 💖🫂",
+    cute: "Goodnighttt, {name}! 🥹🌙\n\nTime to put your phone down, get comfortable, and let those sleepy eyes rest. Sending you a million imaginary stars and the softest virtual hug. Sweet dreams, cutie! ✨💗",
+    funny: "Good night, {name}! 😂🌙\n\nYour phone has officially requested a break, your pillow is waiting, and your blanket misses you. Report to bed immediately! May your dreams be wonderful and your alarm clock be unusually kind tomorrow. 😂",
+    formal: "Good night, {name}.\n\nWishing you a restful night and a peaceful mind. May you wake up refreshed, motivated, and ready to welcome a new day. Sleep well."
+},
+
+congrats: {
+    title: "🎉 Create a Congratulations Message",
+    heartfelt: "Congratulations, {name}! 🎉💖\n\nYou deserve to feel proud of this achievement. Every effort, every lesson, and every step forward has helped bring you to this moment. May this success open doors to even greater opportunities. Keep believing in yourself and continue moving toward your dreams!",
+    romantic: "Congratulations, {name}! ❤️🎉\n\nI am so happy to see you achieve something meaningful. Your happiness matters to me, and I hope you take a moment to celebrate how far you have come. May many more wonderful achievements find their way into your life! 💖",
+    cute: "YAYYY, {name}! 🥳🎉\n\nLook who did something amazing! You deserve the biggest celebration, the happiest smiles, and a whole lot of appreciation. Keep shining, superstar! ✨💗",
+    funny: "Congratulations, {name}! 😂🎉\n\nOfficially promoted to the next level of awesomeness! Please accept this imaginary trophy and unlimited bragging rights. You have earned it! 🏆",
+    formal: "Congratulations on your achievement, {name}.\n\nYour dedication and effort have led to this wonderful milestone. Wishing you continued success and many more opportunities to accomplish your goals."
+},
+
+valentine: {
+    title: "💘 Create a Valentine's Day Wish",
+    heartfelt: "Happy Valentine's Day, {name}! 💘💗\n\nToday is a lovely reminder to appreciate the people who bring warmth and happiness into our lives. I am grateful for the connection we share and the memories that make it special. Wishing you a day filled with kindness, smiles, and genuine affection.",
+    romantic: "Happy Valentine's Day, my favorite person! ❤️🌹\n\nYou make so many ordinary moments feel extraordinary. I treasure our conversations, our memories, and the happiness you bring into my life. Today and every day, I hope you feel appreciated, respected, and loved. 💋💖",
+    cute: "Happy Valentine's Day, cutie! 🥹💘\n\nSending you extra smiles, imaginary flowers, unlimited hugs, and a whole lot of affection today! You are a very special person, and I hope your day is as sweet as your smile. 🌹🫶",
+    funny: "Happy Valentine's Day, {name}! 😂❤️\n\nYou have successfully stolen a place in my thoughts, and I am not even asking for it back! Please accept this official certificate of being an awesome human. 🌹😂",
+    formal: "Wishing you a wonderful Valentine's Day, {name}.\n\nMay your day be filled with kindness, meaningful connections, happiness, and appreciation for the people who make life special."
+},
+
+mothersday: {
+    title: "🌷 Create a Mother's Day Wish",
+    heartfelt: "Happy Mother's Day! 🌷❤️\n\nThank you for your endless care, patience, guidance, and love. So many of life's best lessons begin with a mother's words and actions. I am grateful for the countless things you do, including the little things that often go unnoticed. You deserve happiness, respect, good health, and love every day. 💖",
+    romantic: "To the most special mother, ❤️🌷\n\nYour kindness and love make life warmer and brighter. Thank you for the care you give and the strength you show every day. I hope today reminds you how deeply you are appreciated and how much happiness you bring to others.",
+    cute: "Happy Mother's Day, Mumma! 🥹🌷\n\nSending you the biggest hug and all my love! Thank you for your care, your delicious food, your advice, and your amazing ability to know when something is wrong. You are truly special! 💗🫂",
+    funny: "Happy Mother's Day! 😂❤️\n\nThank you for feeding me, guiding me, answering my endless questions, and somehow knowing everything before I explain it! You deserve a holiday, a crown, and unlimited cups of tea. 👑🌷",
+    formal: "Wishing you a very Happy Mother's Day.\n\nThank you for your care, guidance, and constant support. May your day be filled with happiness, appreciation, peace, and all the love you so generously give to others."
+},
+
+thankyou: {
+    title: "🙏 Create a Thank You Message",
+    heartfelt: "Dear {name}, 💗\n\nThank you for your kindness and for making a positive difference in my life. I genuinely appreciate the time, care, and thoughtfulness you have shown me. Sometimes words cannot fully express gratitude, but I hope you know how much your actions mean to me. Thank you from the bottom of my heart. 🙏",
+    romantic: "Thank you, {name}! ❤️\n\nI appreciate all the little things you do, the kindness you show, and the happiness you bring into my life. You may not always realize how much your actions mean to me, but I truly value you. Thank you for being someone so special. 💖",
+    cute: "Thank youuu, {name}! 🥹💗\n\nSending you a giant virtual hug because a simple thank-you does not feel like enough! I really appreciate your kindness and the happiness you have brought into my day. You are awesome! 🫂✨",
+    funny: "Dear {name}, 😂🙏\n\nThank you for your excellent service, outstanding kindness, and top-class human behavior! Please accept this imaginary award and unlimited appreciation from me. You are officially appreciated! 🏆",
+    formal: "Dear {name},\n\nThank you for your kindness, time, and support. I sincerely appreciate your contribution and the positive difference you have made. Your thoughtfulness is valued, and I am grateful for your help."
+},
+
+custom: {
+    title: "💌 Create a Custom Wish",
+    heartfelt: "Dear {name}, 💗\n\nI wanted to take a moment to make this occasion special for you. You are someone worth celebrating, and I hope this day brings you happiness, beautiful memories, and many reasons to smile. Whatever the occasion, I wish you peace, success, and wonderful moments ahead. ✨",
+    romantic: "Hey {name}! ❤️💌\n\nI wanted to create a little message just for you because you are someone special to me. May this occasion bring you joy, and may we continue making beautiful memories together. Sending you lots of warmth and affection. 💖",
+    cute: "Heyyy, {name}! 🥹💗\n\nThis little message is specially for you! I hope it brings a smile to your face and makes your day feel a little brighter. You deserve lovely moments, happy surprises, and plenty of reasons to smile. 🫶✨",
+    funny: "Dear {name}! 😂🎉\n\nThis is your official reminder that today is a great opportunity to smile, celebrate, and enjoy yourself. Please accept this message as a certificate of being an awesome human. Have a fantastic day! 🏆",
+    formal: "Dear {name},\n\nPlease accept my warm wishes on this special occasion. May it bring you happiness, success, good health, and meaningful experiences. Wishing you all the best for the days ahead."
+}
+
+};
+
+/* ELEMENTS */
+
+const form = document.getElementById("wishForm");
+const typeSelect = document.getElementById("type");
+const styleSelect = document.getElementById("style");
+const senderInput = document.getElementById("sender");
+const receiverInput = document.getElementById("receiver");
+const detailsInput = document.getElementById("details");
+const customOccasionInput = document.getElementById("customOccasion");
+const output = document.getElementById("output");
+const messageText = document.getElementById("messageText");
+const generatorTitle = document.getElementById("generatorTitle");
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+/* SELECT OCCASION */
+
+function selectOccasion(type) {
+    typeSelect.value = type;
+    updateTitle();
+
+    document.querySelectorAll(".occasion").forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.type === type
+        );
+    });
+}
+
+function updateTitle() {
+    const occasion = messages[typeSelect.value];
+
+    generatorTitle.textContent =
+        occasion ? occasion.title : "💌 Create a Special Wish";
+}
+
+document.querySelectorAll(".occasion").forEach(button => {
+    button.addEventListener("click", () => {
+        selectOccasion(button.dataset.type);
+
+        document.getElementById("generator")
+            .scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+typeSelect.addEventListener("change", () => {
+    selectOccasion(typeSelect.value);
+});
+
+/* GENERATE MESSAGE */
+
+function generateMessage() {
+    const type = typeSelect.value;
+    const style = styleSelect.value;
+
+    const sender = senderInput.value.trim();
+    const receiver = receiverInput.value.trim() || "Dear Friend";
+
+    const details = detailsInput.value.trim();
+    const customOccasion = customOccasionInput.value.trim();
+
+    const selectedMessages = messages[type];
+
+    if (!selectedMessages) {
+        return "";
+    }
+
+    let message = selectedMessages[style] ||
+                  selectedMessages.heartfelt;
+
+    message = message.replaceAll("{name}", receiver);
+
+    if (customOccasion) {
+        message =
+            "✨ " + customOccasion + " ✨\n\n" + message;
+    }
+
+    if (details) {
+        message += "\n\nA little something from my heart:\n" +
+                   details;
+    }
+
+    if (sender) {
+        message += "\n\nWith " +
+            (style === "romantic" ? "love ❤️" : "warm wishes 💗") +
+            ",\n" + sender;
+    }
+
+    return message;
+}
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const message = generateMessage();
+
+    if (!message) {
+        return;
+    }
+
+    messageText.textContent = message;
+    output.style.display = "block";
+
+    launchConfetti();
+
+    output.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+});
+
+/* SURPRISE ME */
+
+document.getElementById("surpriseButton")
+    .addEventListener("click", function() {
+
+        const occasionTypes = Object.keys(messages);
+        const randomType = occasionTypes[
+            Math.floor(Math.random() * occasionTypes.length)
+        ];
+
+        const styles = [
+            "heartfelt",
+            "romantic",
+            "cute",
+            "funny",
+            "formal"
+        ];
+
+        const randomStyle = styles[
+            Math.floor(Math.random() * styles.length)
+        ];
+
+        selectOccasion(randomType);
+        styleSelect.value = randomStyle;
+
+        const message = generateMessage();
+
+        messageText.textContent = message;
+        output.style.display = "block";
+
+        launchConfetti();
+
+        output.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    });
+
+/* COPY MESSAGE */
+
+document.getElementById("copyButton")
+    .addEventListener("click", async function() {
+
+        const message = messageText.textContent;
+        const button = this;
+
+        try {
+            await navigator.clipboard.writeText(message);
+            button.textContent = "✅ Copied!";
+
+        } catch (error) {
+            const textArea = document.createElement("textarea");
+            textArea.value = message;
+
+            document.body.appendChild(textArea);
+            textArea.select();
+
+            const copied = document.execCommand("copy");
+            textArea.remove();
+
+            button.textContent = copied
+                ? "✅ Copied!"
+                : "Please select and copy";
+
+        }
+
+        setTimeout(() => {
+            button.textContent = "📋 Copy Message";
+        }, 2000);
+    });
+
+/* WHATSAPP SHARE */
+
+document.getElementById("whatsappButton")
+    .addEventListener("click", function() {
+
+        const message = messageText.textContent;
+
+        const whatsappURL =
+            "https://wa.me/?text=" + encodeURIComponent(message);
+
+        window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    });
+
+/* CONFETTI ANIMATION */
+
+function launchConfetti() {
+
+    const colors = [
+        "#ff4f87",
+        "#8b5cf6",
+        "#ffc857",
+        "#42d6a4",
+        "#56a8ff",
+        "#ff8066"
+    ];
+
+    const numberOfPieces = 110;
+
+    for (let i = 0; i < numberOfPieces; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left = Math.random() * 100 + "vw";
+
+        piece.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * 0.8 + "s";
+
+        piece.style.width =
+            (5 + Math.random() * 7) + "px";
+
+        piece.style.height =
+            (8 + Math.random() * 10) + "px";
+
+        piece.style.borderRadius =
+            Math.random() > 0.5 ? "50%" : "2px";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 6500);
+    }
+}
+
+/* INITIALIZE */
+
+updateTitle();
+
+</script>
+
+</body>
+</html>
+```
